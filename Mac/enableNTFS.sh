@@ -19,6 +19,7 @@ fi
 
 if [ ! $MOUNTPOINT ]; then
 	ln -s /Volumes/$LABEL $PREFIX$LABEL
+	echo "LABEL=$LABEL none ntfs rw,auto,nobrowse" >> /etc/fstab
 else
 	if [ -f "$PREFIX$MOUNTPOINT" ] || [ -d "$PREFIX$MOUNTPOINT" ]; then
 		echo "$PREFIX$MOUNTPOINT EXIST,NEED CHANGE MOUNTPOINT NAME"
@@ -26,4 +27,5 @@ else
 		exit -1
 	fi
 	ln -s /Volumes/$LABEL $PREFIX$MOUNTPOINT
+	echo "LABEL=$LABEL none ntfs rw,auto,nobrowse" >> /etc/fstab
 fi
